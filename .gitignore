@@ -1,0 +1,14 @@
+# Local-only audit (kept out of public repo per author preference)
+AUDIT.md
+
+# Default output dir when running the skill
+x-to-markdown/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
