@@ -55,11 +55,9 @@ npx -y bun scripts/main.ts https://x.com/elonmusk/status/... --thread --download
 
 ## Security notes
 
-This skill is a clean-room rewrite of `freestylefly/canghe-skills` after a security audit. Differences from upstream:
-
-- Uses the official X API v2 Bearer token instead of reverse-engineered web GraphQL + session cookies.
-- Media downloader has a hostname allowlist (`pbs.twimg.com`, `video.twimg.com`), manual redirect handling, response size cap, and request timeout — fixes SSRF surface present in upstream.
-- No cookie/credential persistence to disk.
+- Uses the official X API v2 Bearer token only — no scraping, no session cookies, no account-suspension risk.
+- Media downloader has a hostname allowlist (`pbs.twimg.com`, `video.twimg.com`), manual redirect handling, response size cap, and request timeout.
+- No credential persistence to disk.
 - No telemetry or third-party network calls.
 
 ## Threat model

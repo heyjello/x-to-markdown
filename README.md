@@ -3,7 +3,7 @@
 Convert X (Twitter) posts, threads, and X Articles into clean markdown files using the **official X API v2**. Pay-per-request via your own Bearer token — no account session, no scraping, no cookies.
 
 ```bash
-$ npx x-to-markdown https://x.com/jack/status/20
+$ bun scripts/main.ts https://x.com/jack/status/20
 [x-to-markdown] Fetching tweet 20 (cost: $0.005, URL input)...
 [x-to-markdown] Wrote ./x-to-markdown/jack/20.md
 ```
@@ -18,25 +18,25 @@ $ npx x-to-markdown https://x.com/jack/status/20
 
 ## Install
 
-### As a CLI
-
-```bash
-npm install -g x-to-markdown
-```
-
-Or run without installing:
-
-```bash
-npx x-to-markdown <url>
-```
-
-### As a Claude skill
+### As a Claude skill (recommended)
 
 Drop the repo at `~/.claude/skills/x-to-markdown/`. Claude will discover it via `SKILL.md`.
 
 ```bash
 git clone https://github.com/heyjello/x-to-markdown ~/.claude/skills/x-to-markdown
 ```
+
+### As a standalone CLI
+
+Clone anywhere and run with [Bun](https://bun.sh):
+
+```bash
+git clone https://github.com/heyjello/x-to-markdown
+cd x-to-markdown
+bun scripts/main.ts <url>
+```
+
+The scripts are TypeScript and run directly under Bun. Node 20+ users will need `tsx` or a build step.
 
 ## Setup
 
@@ -54,7 +54,7 @@ export X_BEARER_TOKEN="AAAA..."
 ## Usage
 
 ```bash
-x-to-markdown <url> [options]
+bun scripts/main.ts <url> [options]
 ```
 
 **Options:**
@@ -68,16 +68,16 @@ x-to-markdown <url> [options]
 
 ```bash
 # Single tweet
-x-to-markdown https://x.com/jack/status/20
+bun scripts/main.ts https://x.com/jack/status/20
 
 # Thread with local media
-x-to-markdown https://x.com/elonmusk/status/... --thread --download-media -o ./out/
+bun scripts/main.ts https://x.com/elonmusk/status/... --thread --download-media -o ./out/
 
 # Bare ID (costs $0.015)
-x-to-markdown 1234567890123456789
+bun scripts/main.ts 1234567890123456789
 
 # JSON metadata for piping
-x-to-markdown https://x.com/jack/status/20 --json | jq -r '.markdownPath'
+bun scripts/main.ts https://x.com/jack/status/20 --json | jq -r '.markdownPath'
 ```
 
 ## What it does NOT do
@@ -100,11 +100,11 @@ This output contains attacker-controlled content from public X posts. Treat it a
 
 The Bearer token is read from `X_BEARER_TOKEN` once per invocation and never logged or written to disk. The only outbound hosts are `api.x.com` and (with `--download-media`) `pbs.twimg.com` / `video.twimg.com`.
 
-This skill is a clean-room rewrite of [`freestylefly/canghe-skills`](https://github.com/freestylefly/canghe-skills) after a security audit. Differences from the upstream:
+Security posture:
 
-- Official X API v2 Bearer token instead of reverse-engineered web GraphQL + session cookies (no account-suspension risk).
-- Media downloader hardened with hostname allowlist + manual redirect handling + response-size cap + per-request timeout.
-- No cookie / credential persistence to disk.
+- Official X API v2 Bearer token only — no scraping, no session cookies, no account-suspension risk.
+- Media downloader hardened with hostname allowlist (`pbs.twimg.com`, `video.twimg.com`), manual redirect handling, response-size cap, and per-request timeout.
+- No credential persistence to disk.
 - No telemetry or third-party network calls.
 
 ## Runtime
