@@ -1,6 +1,8 @@
-# x-to-markdown
+# X/Twitter to Markdown
 
-Convert X (Twitter) posts, threads, and X Articles into clean markdown files using the **official X API v2**. Pay-per-request via your own Bearer token — no account session, no scraping, no cookies.
+A Claude Code and OpenAI Codex agent skill that converts X/Twitter posts, threads, and long-form X Articles into clean Markdown files with YAML frontmatter.
+
+Use it to archive tweets, save X Articles to Obsidian or other PKM systems, preserve research threads, and feed social posts into AI workflows. It uses the **official X API v2** with your own Bearer token: no scraping, no browser cookies, no account session, no telemetry, and no third-party extraction service.
 
 ```bash
 $ bun scripts/main.ts https://x.com/jack/status/20
@@ -16,14 +18,31 @@ $ bun scripts/main.ts https://x.com/jack/status/20
 - **Cost-aware** — URL inputs skip the User resource expansion ($0.005/article); bare-ID inputs pay full price ($0.015) for display-name resolution.
 - **No telemetry**, no third-party hosts, no credentials persisted to disk.
 
+## Why this instead of scraping-based Twitter/X readers?
+
+- Uses the official X API v2.
+- Does not read browser cookies.
+- Does not touch your logged-in account session.
+- Does not send content to third-party extraction services.
+- Writes local Markdown with YAML frontmatter.
+- Includes a documented output threat model for untrusted social content.
+
 ## Install
 
-### As a Claude skill (recommended)
+### As a Claude Code skill
 
 Drop the repo at `~/.claude/skills/x-to-markdown/`. Claude will discover it via `SKILL.md`.
 
 ```bash
 git clone https://github.com/heyjello/x-to-markdown ~/.claude/skills/x-to-markdown
+```
+
+### As an OpenAI Codex skill
+
+Drop the repo at `~/.agents/skills/x-to-markdown/`. Codex will discover it via `SKILL.md`.
+
+```bash
+git clone https://github.com/heyjello/x-to-markdown ~/.agents/skills/x-to-markdown
 ```
 
 ### As a standalone CLI
@@ -37,6 +56,14 @@ bun scripts/main.ts <url>
 ```
 
 The scripts are TypeScript and run directly under Bun. Node 20+ users will need `tsx` or a build step.
+
+## Common uses
+
+- Convert a tweet to Markdown.
+- Convert a Twitter/X thread to Markdown.
+- Save a long-form X Article to Markdown.
+- Archive X posts for Obsidian, Logseq, or another PKM workflow.
+- Create clean source notes for research, content curation, or AI-agent context.
 
 ## Setup
 
@@ -107,9 +134,15 @@ Security posture:
 - No credential persistence to disk.
 - No telemetry or third-party network calls.
 
+To report a vulnerability, see [SECURITY.md](SECURITY.md).
+
 ## Runtime
 
 Default: [Bun](https://bun.sh). Node 20+ also works, but on machines with corporate TLS interception (e.g., Cisco Secure Access) you may need `NODE_EXTRA_CA_CERTS` pointing at the corporate CA bundle. Bun honors the system keychain on macOS and avoids this entirely.
+
+## Suggested GitHub topics
+
+`claude-skill`, `codex-skill`, `agent-skills`, `ai-agent`, `twitter`, `x-api`, `x-api-v2`, `x-articles`, `markdown`, `obsidian`, `pkm`, `content-archiving`, `typescript`, `bun`, `claude-code`, `openai-codex`
 
 ## License
 
