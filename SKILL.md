@@ -1,15 +1,23 @@
 ---
 name: x-to-markdown
-description: Use when the user asks to convert an X (Twitter) post, thread, or X Article URL into a markdown file. Auto-detects articles. Uses the official X API v2 with a Bearer token (~$0.005/article from URL, ~$0.015 from bare ID). No account session is touched.
+description: Convert X/Twitter posts, threads, and long-form X Articles into Markdown files with YAML frontmatter. Use when the user shares an x.com or twitter.com status URL, wants to archive tweets, save an X Article to Obsidian/PKM, download post media, or turn social content into clean Markdown. Uses the official X API v2 with X_BEARER_TOKEN; no scraping, cookies, account session, telemetry, or third-party hosts.
 ---
 
 # X to Markdown
 
-Converts X (Twitter) posts, threads, and X Articles into markdown files with YAML frontmatter, optionally localizing media (images/videos) to disk.
+Converts X/Twitter posts, threads, and X Articles into Markdown files with YAML frontmatter, optionally localizing media (images/videos) to disk.
 
 ## When to use
 
-User pastes an `x.com/<user>/status/<id>` or `twitter.com/<user>/status/<id>` URL and wants a markdown file. Also works on bare 18-digit tweet IDs. **X Articles are auto-detected** — paste the tweet URL that contains the article (the one with `/status/<id>`, not `/i/article/<id>`); the skill detects the `article` field on the tweet and renders the full body, code blocks, and reference list.
+Use this skill when the user wants to:
+
+- Convert a tweet, thread, or X Article to Markdown.
+- Archive X/Twitter posts for research or content curation.
+- Save an X Article to Obsidian, Logseq, or another PKM system.
+- Download supported post media alongside the generated Markdown.
+- Turn social content into clean local notes for an AI-agent workflow.
+
+The user can paste an `x.com/<user>/status/<id>` or `twitter.com/<user>/status/<id>` URL. Bare 18-digit tweet IDs also work, but full URLs are cheaper because the username can be extracted from the path. **X Articles are auto-detected** — paste the tweet URL that contains the article (the one with `/status/<id>`, not `/i/article/<id>`); the skill detects the `article` field on the tweet and renders the full body, code blocks, and reference list.
 
 ## What it does NOT do
 

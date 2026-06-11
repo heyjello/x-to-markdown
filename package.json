@@ -1,12 +1,15 @@
 {
   "name": "x-to-markdown",
   "version": "0.1.0",
-  "description": "Convert X (Twitter) posts, threads, and X Articles into markdown using the official X API v2.",
+  "description": "Claude and Codex skill to convert X/Twitter posts, threads, and X Articles into Markdown using the official X API v2.",
   "type": "module",
   "files": [
     "scripts/",
+    "agents/",
     "SKILL.md",
     "README.md",
+    "CHANGELOG.md",
+    "SECURITY.md",
     "LICENSE"
   ],
   "scripts": {
@@ -18,10 +21,20 @@
     "x",
     "markdown",
     "x-api",
+    "x-api-v2",
     "claude-skill",
+    "codex-skill",
+    "agent-skills",
+    "ai-agent",
+    "claude-code",
+    "openai-codex",
     "tweet",
     "thread",
-    "article"
+    "article",
+    "x-articles",
+    "obsidian",
+    "pkm",
+    "content-archiving"
   ],
   "author": "heyjello",
   "license": "MIT",
