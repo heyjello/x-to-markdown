@@ -1,0 +1,20 @@
+{
+  "name": "x-to-markdown",
+  "interface": {
+    "displayName": "X to Markdown"
+  },
+  "plugins": [
+    {
+      "name": "x-to-markdown",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

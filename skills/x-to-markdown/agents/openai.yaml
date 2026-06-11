@@ -1,0 +1,5 @@
+interface:
+  display_name: "X to Markdown"
+  short_description: "Convert X/Twitter posts, threads, and Articles to Markdown."
+  default_prompt: "Convert this X/Twitter URL to Markdown:"
+  brand_color: "#111111"

@@ -2,7 +2,7 @@
 AUDIT.md
 
 # Default output dir when running the skill
-x-to-markdown/
+/x-to-markdown/
 
 # OS junk
 .DS_Store
