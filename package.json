@@ -6,6 +6,10 @@
   "files": [
     "scripts/",
     "agents/",
+    ".agents/",
+    ".claude-plugin/",
+    ".codex-plugin/",
+    "skills/",
     "SKILL.md",
     "README.md",
     "CHANGELOG.md",

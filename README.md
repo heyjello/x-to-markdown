@@ -37,12 +37,32 @@ Drop the repo at `~/.claude/skills/x-to-markdown/`. Claude will discover it via 
 git clone https://github.com/heyjello/x-to-markdown ~/.claude/skills/x-to-markdown
 ```
 
+### As a Claude Code plugin marketplace
+
+After this repo is registered as a Claude Code marketplace, install the namespaced plugin skill:
+
+```text
+/plugin marketplace add heyjello/x-to-markdown
+/plugin install x-to-markdown@x-to-markdown
+```
+
+The skill is then available as `/x-to-markdown:x-to-markdown`.
+
 ### As an OpenAI Codex skill
 
 Drop the repo at `~/.agents/skills/x-to-markdown/`. Codex will discover it via `SKILL.md`.
 
 ```bash
 git clone https://github.com/heyjello/x-to-markdown ~/.agents/skills/x-to-markdown
+```
+
+### As an OpenAI Codex plugin marketplace
+
+Register this repo as a Codex marketplace, then install the plugin:
+
+```bash
+codex plugin marketplace add heyjello/x-to-markdown
+codex plugin add x-to-markdown@x-to-markdown
 ```
 
 ### As a standalone CLI
