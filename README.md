@@ -29,15 +29,32 @@ $ bun scripts/main.ts https://x.com/jack/status/20
 
 ## Install
 
-### As a Claude Code skill
+### No-clone skill install
 
-Drop the repo at `~/.claude/skills/x-to-markdown/`. Claude will discover it via `SKILL.md`.
+After the npm package is published, install the skill into Claude Code, Codex, Cursor, or all three without cloning the repo:
 
 ```bash
-git clone https://github.com/heyjello/x-to-markdown ~/.claude/skills/x-to-markdown
+npx x-to-markdown install --platform claude
+npx x-to-markdown install --platform codex
+npx x-to-markdown install --platform cursor
+npx x-to-markdown install --platform all
 ```
 
-### As a Claude Code plugin marketplace
+Use `--force` to replace an existing installed copy:
+
+```bash
+npx x-to-markdown install --platform all --force
+```
+
+The installer writes the skill to user-level agent skill directories:
+
+| Platform | Destination |
+|---|---|
+| Claude Code | `~/.claude/skills/x-to-markdown` |
+| OpenAI Codex | `~/.agents/skills/x-to-markdown` |
+| Cursor | `~/.cursor/skills/x-to-markdown` |
+
+### Claude Code plugin marketplace
 
 After this repo is registered as a Claude Code marketplace, install the namespaced plugin skill:
 
@@ -48,26 +65,48 @@ After this repo is registered as a Claude Code marketplace, install the namespac
 
 The skill is then available as `/x-to-markdown:x-to-markdown`.
 
-### As an OpenAI Codex skill
+### OpenAI Codex plugin marketplace
 
-Drop the repo at `~/.agents/skills/x-to-markdown/`. Codex will discover it via `SKILL.md`.
+Register this repo as a Codex marketplace:
+
+```bash
+codex plugin marketplace add heyjello/x-to-markdown
+```
+
+Then open the plugin browser and install `x-to-markdown`:
+
+```text
+/plugins
+```
+
+### Cursor GitHub import or plugin
+
+Cursor can import agent skills from GitHub repository links:
+
+1. Open **Cursor Settings -> Rules**.
+2. In **Project Rules**, choose **Add Rule**.
+3. Select **Remote Rule (Github)**.
+4. Enter `https://github.com/heyjello/x-to-markdown`.
+
+This repo also includes `.cursor-plugin/plugin.json` so it can be submitted to the Cursor plugin marketplace or imported into a team marketplace.
+
+### Direct clone fallback
+
+If you want a local editable copy instead of a package or marketplace install:
 
 ```bash
 git clone https://github.com/heyjello/x-to-markdown ~/.agents/skills/x-to-markdown
 ```
 
-### As an OpenAI Codex plugin marketplace
+### Standalone CLI
 
-Register this repo as a Codex marketplace, then install the plugin:
+After the npm package is published, run the converter without cloning:
 
 ```bash
-codex plugin marketplace add heyjello/x-to-markdown
-codex plugin add x-to-markdown@x-to-markdown
+npx x-to-markdown <url>
 ```
 
-### As a standalone CLI
-
-Clone anywhere and run with [Bun](https://bun.sh):
+The converter itself runs on [Bun](https://bun.sh). If you prefer a local checkout:
 
 ```bash
 git clone https://github.com/heyjello/x-to-markdown
@@ -75,7 +114,7 @@ cd x-to-markdown
 bun scripts/main.ts <url>
 ```
 
-The scripts are TypeScript and run directly under Bun. Node 20+ users will need `tsx` or a build step.
+The scripts are TypeScript and run directly under Bun. Node 20+ users will need `tsx` or a build step for the converter; the `install` subcommand is Node-based.
 
 ## Common uses
 
@@ -101,7 +140,7 @@ export X_BEARER_TOKEN="AAAA..."
 ## Usage
 
 ```bash
-bun scripts/main.ts <url> [options]
+x-to-markdown <url> [options]
 ```
 
 **Options:**
