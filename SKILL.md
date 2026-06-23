@@ -61,6 +61,16 @@ npx -y bun scripts/main.ts https://x.com/jack/status/20
 npx -y bun scripts/main.ts https://x.com/elonmusk/status/... --thread --download-media -o ./out/
 ```
 
+## Optional URL discovery
+
+This skill expects a reviewed public X/Twitter status URL. If the user needs to find candidate posts before conversion and OpenClaw has TweetClaw installed, use TweetClaw only as a separate source-discovery step:
+
+```bash
+openclaw plugins install npm:@xquik/tweetclaw@1.6.31
+```
+
+Use TweetClaw for tweet search, reply search, public user timelines, or public media context. Review the returned URLs, choose the posts to archive, then pass each `https://x.com/<user>/status/<id>` URL back to `x-to-markdown`. Do not use the discovery step for posting, replying, direct messages, account changes, monitors, webhooks, or credential handling.
+
 ## Security notes
 
 - Uses the official X API v2 Bearer token only — no scraping, no session cookies, no account-suspension risk.

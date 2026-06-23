@@ -124,6 +124,16 @@ The scripts are TypeScript and run directly under Bun. Node 20+ users will need 
 - Archive X posts for Obsidian, Logseq, or another PKM workflow.
 - Create clean source notes for research, content curation, or AI-agent context.
 
+## Optional URL Discovery With TweetClaw
+
+`x-to-markdown` works best after you already have the exact public X/Twitter status URL to archive. If you use OpenClaw and need to find candidate URLs first, you can install TweetClaw as a separate source-discovery plugin:
+
+```bash
+openclaw plugins install npm:@xquik/tweetclaw@1.6.31
+```
+
+Use TweetClaw only to search tweets, search tweet replies, inspect public user timelines, or collect public media context. Review the returned public URLs, choose the posts you want to preserve, then pass each `https://x.com/<user>/status/<id>` URL to `x-to-markdown` for Markdown conversion. Keep this skill responsible for archiving the selected post, thread, article, and media. Do not use TweetClaw from this workflow for posting, replying, direct messages, account changes, monitors, webhooks, or credential handling.
+
 ## Setup
 
 Get a Bearer token at <https://console.x.com>. The X API v2 is pay-per-request:
