@@ -1,0 +1,23 @@
+{
+  "name": "x-to-markdown",
+  "description": "Convert X/Twitter posts, threads, and long-form X Articles into Markdown with YAML frontmatter.",
+  "version": "0.1.0",
+  "author": {
+    "name": "heyjello"
+  },
+  "homepage": "https://github.com/heyjello/x-to-markdown",
+  "repository": "https://github.com/heyjello/x-to-markdown",
+  "license": "MIT",
+  "keywords": [
+    "twitter",
+    "x",
+    "markdown",
+    "x-api-v2",
+    "cursor-skill",
+    "claude-skill",
+    "codex-skill",
+    "agent-skills",
+    "obsidian",
+    "pkm"
+  ]
+}

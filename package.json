@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "description": "Claude and Codex skill to convert X/Twitter posts, threads, and X Articles into Markdown using the official X API v2.",
   "type": "module",
+  "bin": {
+    "x-to-markdown": "./bin/x-to-markdown.js"
+  },
   "files": [
+    "bin/",
     "scripts/",
     "agents/",
     ".agents/",
     ".claude-plugin/",
     ".codex-plugin/",
+    ".cursor-plugin/",
     "skills/",
     "SKILL.md",
     "README.md",
@@ -17,7 +22,9 @@
     "LICENSE"
   ],
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit --strict --target es2022 --module nodenext --moduleResolution nodenext --skipLibCheck --types node scripts/*.ts",
+    "prepublishOnly": "bun run typecheck && npm test",
     "start": "bun scripts/main.ts"
   },
   "keywords": [
@@ -31,6 +38,7 @@
     "agent-skills",
     "ai-agent",
     "claude-code",
+    "cursor-skill",
     "openai-codex",
     "tweet",
     "thread",
