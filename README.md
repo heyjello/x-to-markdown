@@ -4,7 +4,7 @@ A Claude Code and OpenAI Codex agent skill that converts X/Twitter posts, thread
 
 Use it to archive tweets, save X Articles to Obsidian or other PKM systems, preserve research threads, and feed social posts into AI workflows. It uses the **official X API v2** with your own Bearer token: no scraping, no browser cookies, no account session, no telemetry, and no third-party extraction service.
 
-https://github.com/user-attachments/assets/REPLACE_ME
+https://github.com/user-attachments/assets/38014a24-905d-4f68-9227-f39260f7c477
 
 ```bash
 $ bun scripts/main.ts https://x.com/jack/status/20
